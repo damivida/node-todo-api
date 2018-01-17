@@ -15,7 +15,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
     //--declearing db 
     const myDb = db.db('TodoApp');
     
-    //--INSERTING DATA
+    //--INSERTING DATA(callBack function)
 /*    myDb.collection('Todos').insertOne({
         text: 'Something to do',
         compleated: false
@@ -36,8 +36,18 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
         }
         console.log(result.ops[0]._id.getTimestamp());
     });
+    */
     
     
-    db.close();*/
-    
+    //--INSERTING DATA(promise function)
+/*myDb.collection('Todos').insertOne({
+    text: "Go to backary",
+    completed: false
+}).then((result) => {
+    console.log(result);
+}, (err) => {
+    console.log('Unabel to write document', err);
+});    
+    */
+   // db.close();
 });
