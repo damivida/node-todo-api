@@ -9,7 +9,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
-app.post('/todos', (req,res) => {
+app.post('/todos', (req, res) => {
     var todo = new Todo({
         text: req.body.text
     });
@@ -21,11 +21,23 @@ app.post('/todos', (req,res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Started on port 3000');  
+
+app.post('/users', (req, res) => {
+    var user = new User ({
+        email: req.body.email
+    });
+    
+    user.save().then((doc)=> {
+        res.send(doc);
+    },(err) => {
+        res.status(400).send(err);
+    });
 });
 
 
+app.listen(3000, () => {
+    console.log('Started on port 3000');  
+});
 
 
 
