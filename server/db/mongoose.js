@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+ var mongoose = require('mongoose');
 
 //-setting up promise library
 mongoose.Promise = global.Promise;
