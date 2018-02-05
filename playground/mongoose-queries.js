@@ -46,3 +46,23 @@ User.findById(id).then((user) => {
     console.log(err);
 });
 
+
+Todo.find({
+    text: "First test tod"
+}).then((todo) => {
+    if(!todo) {
+        return console.log("Todo cannot be found");
+    }
+    console.log(JSON.stringify(todo, undefined, 2));
+}, (err) => {
+    console.log('Cannot get requested todo', err);
+});
+
+
+
+
+
+
+
+
+
