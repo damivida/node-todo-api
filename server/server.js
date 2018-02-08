@@ -47,6 +47,7 @@ app.get('/todos', (req, res) => {
 });
 
 
+//CHALANGE
 //GET /todos/123456
 //Validate id using isValid
 //404- send
@@ -62,14 +63,16 @@ app.get('/todos/:id',(req, res) => {
     
     var id = req.params.id;
     
+    //validateing ID
     if(!ObjectID.isValid(id)) {
        return res.status(404).send("ID is not valid");
     }
-    
+    //finding id in database
     Todo.findById(id).then((todo) => {
         if(!todo) {
              return res.status(404).send("That user is not in database");
         }
+        
         res.send({todo});
     }, (err) => {
         res.status(400).send(err);
