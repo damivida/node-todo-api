@@ -82,7 +82,7 @@ app.get('/todos/:id',(req, res) => {
  
 
 app.listen(port, () => {
-    console.log(`Started up on port ${port}`);  
+    console.log(`Started up at port ${port}`);  
 });
 
 
