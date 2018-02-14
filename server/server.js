@@ -38,13 +38,11 @@ app.post('/users', (req, res) => {
 
 
 app.get('/todos', (req, res) => {
-   Todo.find({
-       text: "Second test todo"
-   }).then((todo) => {
+   Todo.find().then((todo) => {
        res.send({todo});
    }, (err) => {
        res.status(400).send(err);
-   })
+   });
 });
 
 
