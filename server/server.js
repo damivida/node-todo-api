@@ -95,7 +95,7 @@ app.delete('/todos/:id', (req, res) => {
             return res.status(404).send("That todo is not in database");
         }
         
-        res.send(doc);
+        res.send({doc});
     }, (err) => {
         res.status(400).send(err);
     });
