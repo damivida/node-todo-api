@@ -77,7 +77,31 @@ app.get('/todos/:id',(req, res) => {
         res.status(400).send(err);
     });
 });
- 
+
+
+app.delete('/todos/:id', (req, res) => {
+    
+    //grabbing an id
+    var id = req.params.id;
+    
+    //validating ID
+    if(!ObjectID.isValid(id)) {
+        return res.status(404).send("ID is not valid");
+    }
+    
+    //deleting todo from database
+    Todo.findByIdAndRemove(id).then((doc) => {
+        if(!doc) {
+            return res.status(404).send("That todo is not in database");
+        }
+        
+        res.send(doc);
+    }, (err) => {
+        res.status(400).send(err);
+    });
+});
+
+
 
 app.listen(port, () => {
     console.log(`Started up at port ${port}`);  
@@ -86,7 +110,6 @@ app.listen(port, () => {
 
 module.exports = {app};
 
-//
 
 
 
